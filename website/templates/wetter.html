@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block title %}
+<p class="textinfo">{{ titel }}</p>
+{% endblock %} {% block head %}
+<script src="static/wetter.js"></script>
+{% endblock %} {% block content %}
+
+<div class="block-big-big">
+    <div class="wetter-vor-big">
+        <div class="wetter-text-vor-wetter" style="padding-top: 10%;">Jetzt</div>
+        <div class="wetter-icon-vor-wetter" id="wetter-icon" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Temparatur:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-temp-jetzt" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Luftfeucht:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-hum-jetzt" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Luftfeucht:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-wind-jetzt" style="font-size: 30px;"></div>
+    </div>
+    <div class="wetter-vor-big">
+        <div class="wetter-text-vor-wetter" style="padding-top: 10%;">1. Tag</div>
+        <div class="wetter-icon-vor-wetter" id="wetter-icon-d1" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Temparatur:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-temp-jetzt-d1" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Luftfeucht:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-hum-jetzt-d1" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Windgeschw:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-wind-jetzt-d1" style="font-size: 30px;"></div>
+    </div>
+    <div class="wetter-vor-big">
+        <div class="wetter-text-vor-wetter" style="padding-top: 10%;">2. Tag</div>
+        <div class="wetter-icon-vor-wetter" id="wetter-icon-d2" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Temparatur:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-temp-jetzt-d2" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Luftfeucht:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-hum-jetzt-d2" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Windgeschw:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-wind-jetzt-d2" style="font-size: 30px;"></div>
+    </div>
+    <div class="wetter-vor-big">
+        <div class="wetter-text-vor-wetter" style="padding-top: 10%;">3. Tag</div>
+        <div class="wetter-icon-vor-wetter" id="wetter-icon-d3" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Temparatur:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-temp-jetzt-d3" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Luftfeucht:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-hum-jetzt-d3" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Windgeschw:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-wind-jetzt-d3" style="font-size: 30px;"></div>
+    </div>
+    <div class="wetter-vor-big">
+        <div class="wetter-text-vor-wetter" style="padding-top: 10%;">4. Tag</div>
+        <div class="wetter-icon-vor-wetter" id="wetter-icon-d4" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Temparatur:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-temp-jetzt-d4" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Luftfeucht:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-hum-jetzt-d4" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Windgeschw:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-wind-jetzt-d4" style="font-size: 30px;"></div>
+    </div>
+    <div class="wetter-vor-big">
+        <div class="wetter-text-vor-wetter" style="padding-top: 10%;">5. Tag</div>
+        <div class="wetter-icon-vor-wetter" id="wetter-icon-d5" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Temparatur:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-temp-jetzt-d5" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Luftfeucht:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-hum-jetzt-d5" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter" style="font-size: 30px;border-top: 2px solid #000;">Windgeschw:</div>
+        <div class="wetter-text-vor-wetter" id="wetter-wind-jetzt-d5" style="font-size: 30px;"></div>
+    </div>
+    <div class="wetter-vor-big">
+        <div class="wetter-text-vor-wetter-last-row" style="padding-top: 10%;">6. Tag</div>
+        <div class="wetter-icon-vor-wetter-last-row" id="wetter-icon-d6"></div>
+        <div class="wetter-text-vor-wetter-last-row" style="font-size: 30px;border-top: 2px solid #000;">Temparatur:</div>
+        <div class="wetter-text-vor-wetter-last-row" id="wetter-temp-jetzt-d6" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter-last-row" style="font-size: 30px;border-top: 2px solid #000;">Luftfeucht:</div>
+        <div class="wetter-text-vor-wetter-last-row" id="wetter-hum-jetzt-d6" style="font-size: 30px;"></div>
+        <div class="wetter-text-vor-wetter-last-row" style="font-size: 30px;border-top: 2px solid #000;">Windgeschw:</div>
+        <div class="wetter-text-vor-wetter-last-row" id="wetter-wind-jetzt-d6" style="font-size: 30px;"></div>
+    </div>
+</div>
+<script>
+    var anz = 6
+    var typ = 1
+    document.onload = requestdata(anz, typ);
+</script>
+{% endblock %}

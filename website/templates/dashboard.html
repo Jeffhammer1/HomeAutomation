@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}
+<p class="textinfo">{{ titel }}</p>
+{% endblock %} {% block head %}
+<script src="static/dashboard.js"></script>
+{% endblock %} {% block content %}
+<div class="block-small">
+    <div class="wetter-icon" id="wetter-icon"></div>
+    <div class="wetter-text" id="wetter-temp-jetzt"></div>
+    <div class="wetter-text" id="wetter-hum-jetzt"></div>
+</div>
+<div class="block-big">
+    <div class="wetter-vor">
+        <div class="wetter-icon-vor" id="wetter-icon-d1"></div>
+        <div class="wetter-text-vor" id="wetter-temp-jetzt-d1"></div>
+    </div>
+    <div class="wetter-vor">
+        <div class="wetter-icon-vor" id="wetter-icon-d2"></div>
+        <div class="wetter-text-vor" id="wetter-temp-jetzt-d2"></div>
+    </div>
+    <div class="wetter-vor">
+        <div class="wetter-icon-vor" id="wetter-icon-d3"></div>
+        <div class="wetter-text-vor" id="wetter-temp-jetzt-d3"></div>
+    </div>
+    <div class="wetter-vor">
+        <div class="wetter-icon-vor" id="wetter-icon-d4"></div>
+        <div class="wetter-text-vor" id="wetter-temp-jetzt-d4"></div>
+    </div>
+    <div class="wetter-vor">
+        <div class="wetter-icon-vor" id="wetter-icon-d4"></div>
+        <div class="wetter-text-vor" id="wetter-temp-jetzt-d4"></div>
+    </div>
+</div>
+<div class="block-small" onclick="switch_status()">
+    <div class="titel-status" id="titel-status">Status</div>
+    <div class="auto-status" id="auto-status"></div>
+</div>
+<script>
+    var anz = 4
+    var typ = 2
+    document.onload = requestdata(anz, typ);
+</script>
+{% endblock %}

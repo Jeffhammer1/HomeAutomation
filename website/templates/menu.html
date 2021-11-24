@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}
+<p class="textinfo">{{ titel }}</p>
+{% endblock %} {% block head %}
+<script src="static/menu.js"></script>
+{% endblock %} {% block content %}
+<div class="block-big-big">
+    <div class="menu-titel">API-Keys</div>
+    <div class="menu-titel-small">HUE-key</div>
+    <form method="POST">
+        <input type="text" class="kay-input" name="hue-key-input">
+        <div class="menu-titel-small" style="margin-top: 2%;">Openweathermap-key</div>
+        <input type="text" class="kay-input" name="owm-key-input">
+        <button type="submit" class="submit-button" name="submit-button">Submit</button>
+    </form>
+
+</div>
+{% endblock %}

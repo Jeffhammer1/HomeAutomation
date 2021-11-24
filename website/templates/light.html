@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}
+<p class="textinfo">{{ titel }}</p>
+{% endblock %} {% block head %}
+<script src="static/light.js"></script>
+{% endblock %} {% block content %}
+<div class="block-small">
+    <div class="light-block-titel" id="light-text-arbeit-1">Arbeit</div>
+    <div class="light-block-icon" id="light-icon-arbeit-1"></div>
+</div>
+<div class="block-small">
+    <div class="light-block-titel" id="light-text-arbeit-2">Arbeit</div>
+    <div class="light-block-icon" id="light-icon-arbeit-2"></div>
+</div>
+<div class="block-small">
+</div>
+<script>
+    document.onload = requesthuedata();
+</script>
+{% endblock %}
