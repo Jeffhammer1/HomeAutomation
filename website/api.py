@@ -5,8 +5,6 @@ import multiprocessing
 import requests
 import time
 
-#test
-
 from website.classes import API_Keys
 
 api = Blueprint("api", __name__)
