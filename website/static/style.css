@@ -366,6 +366,7 @@ nav.main-menu li.active>a,
     width: 80%;
     margin-right: 10%;
     margin-left: 10%;
+    border-radius: 15px;
 }
 
 .submit-button {
@@ -442,7 +443,7 @@ nav.main-menu li.active>a,
 }
 
 .cont {
-    position: fixed;
+    position: absolute;
     width: 97%;
     height: 100%;
     margin-left: 3.2%;

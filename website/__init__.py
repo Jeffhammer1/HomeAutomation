@@ -15,7 +15,7 @@ config = configparser.ConfigParser()
 
 def start_server():
 
-    stat = 0
+    stat = 1
 
     app = Flask(__name__)
     app.config["SECRET_KEY"] = "hndjuiahdui9ahdn"
