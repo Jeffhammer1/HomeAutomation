@@ -27,7 +27,7 @@ def dashboard():
 @views.route("/menu", methods=["GET", "POST"])
 def menu():
     if flask.request.method == "POST":
-        config.read("website/config.ini")
+        config.read("website/config/config.ini")
         hue = flask.request.form.get("hue-key-input")
         owm = flask.request.form.get("owm-key-input")
         if not owm:
@@ -38,7 +38,7 @@ def menu():
             pass
         else:
             config.set("API-KEYS", "hue", str(hue))
-        with open("website/config.ini", "w") as configfile:
+        with open("website/config/config.ini", "w") as configfile:
             config.write(configfile)
     return render_template("menu.html")
 

@@ -8,9 +8,9 @@ import time
 import configparser
 
 db = SQLAlchemy()
-DB_NAME = "database.db"
+DB_NAME = "database/database.db"
 
-CONFIG_NAME = "config.ini"
+CONFIG_NAME = "website/config/config.ini"
 config = configparser.ConfigParser()
 
 def start_server():
@@ -49,15 +49,15 @@ def create_database(app):
         return db
 
 def create_config_file():
-    if path.exists("website/" + CONFIG_NAME):
+    if path.exists(CONFIG_NAME):
         pass
     else:
-        f = open("website/config.ini", "x")
+        f = open(CONFIG_NAME, "x")
         f.write("")
         f.close()
         config["DEFAULT"] = {}
         config["API-KEYS"] = {"Openweathermap": "", "Hue": ""}
-        with open("website/config.ini", "w") as configfile:
+        with open(CONFIG_NAME, "w") as configfile:
             config.write(configfile)
         print("Config datei wurde erzeugt")
 

@@ -1,2 +1,3 @@
-website/config.ini
 config_backup.ini
+website/config/config.ini
+website/database/database.db

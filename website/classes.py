@@ -5,11 +5,11 @@ class API_Keys():
         pass
 
     def hue_api_key():
-        config.read("website/config.ini")
+        config.read("website/config/config.ini")
         hue_key = config["API-KEYS"]["hue"]
         return hue_key
 
     def owm_api_key():
-        config.read("website/config.ini")
+        config.read("website/config/config.ini")
         owm_key = config["API-KEYS"]["openweathermap"]
         return owm_key
