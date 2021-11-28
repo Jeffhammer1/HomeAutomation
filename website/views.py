@@ -46,6 +46,6 @@ def menu():
 def wetter():
     return render_template("wetter.html")
 
-@views.route("/light")
-def light():
-    return render_template("light.html")
+@views.route("/arbeit")
+def arbeit():
+    return render_template("arbeit.html")
