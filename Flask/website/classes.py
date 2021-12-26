@@ -13,3 +13,8 @@ class API_Keys():
         config.read("website/config/config.ini")
         owm_key = config["API-KEYS"]["openweathermap"]
         return owm_key
+
+class HUE_config():
+    def arbeit():
+        data = [1, 2]
+        return data

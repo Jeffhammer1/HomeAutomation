@@ -9,17 +9,52 @@ import requests
 import json
 from . import classes
 
+
+#Notiz:
+#payload = " {\"on\":true}"
+#r = requests.put(url, data = payload, headers=headers)
+
 def backend(stat):
-    i=0
-    bootup_time = datetime.now()
-    day_old = bootup_time
-    wetter_daten = read_weather_data()
-    while i == 0:
+    arbeitconfig = classes.HUE_config.arbeit()
+    bootuptime = datetime.now()
+    time_old = bootuptime
+    wetter_daten = get_data("owm")
+
+    #Variablen erstellen
+    sunrise = wetter_daten["current"]["sunrise"]
+    sunset = wetter_daten["current"]["sunset"]
+
+    while True:
         try:
             if (stat.value == 1):
-                t = new_day(day_old, wetter_daten)
-                day_old = t[1]
-                wetter_daten = t[0]
+                #Daten initialisieren
+                all_hue_data = get_data("hue")
+                time_now = datetime.now().replace(microsecond=0)
+
+                #Tageswechsel
+                if (time_now.second != time_old.second):
+                    wetter_daten = get_data("owm")
+                    sunrise = wetter_daten["current"]["sunrise"]
+                    sunrise = datetime.fromtimestamp(sunrise)
+                    sunset = wetter_daten["current"]["sunset"]
+                    sunset = datetime.fromtimestamp(sunset)
+                    time_old = datetime.now()
+                else:
+                    pass
+
+
+                #controll sunrise and sunnset
+                if (sunset == time_now):
+                    for x in arbeitconfig:
+                        control_hue_light(x)
+                elif(sunrise == time_now):
+                    for x in arbeitconfig:
+                        control_hue_light(x, 254, 8417)
+                    pass
+
+
+
+                print("Auto")
             else:
                 pass
             time.sleep(1)
@@ -28,41 +63,26 @@ def backend(stat):
                 print("Der Prozess wurde beendet.")
                 break
 
-        
-def data_process():
-    pass
 
-def read_hue_data():
-    hue_key = classes.API_Keys.hue_api_key()
-    r = requests.get(url = "http://192.168.1.10/api/" + hue_key)
-    hue_data = r.json()
-    url = "http://192.168.1.10/api/"+ hue_key +"/lights/2/state"
+def get_data(source):
+    if (source == "hue"):
+        url = "http://192.168.1.10/api/" + classes.API_Keys.hue_api_key()
+    elif (source == "owm"):
+        url = "https://api.openweathermap.org/data/2.5/onecall?lat=47.1921&lon=7.3959&appid=" + classes.API_Keys.owm_api_key()
+    else:
+        print("Fehler in Parameter Source")
+    r = requests.get(url)
+    data = r.json()
+    return data
+
+def control_hue_light(nummer, brighness, color):
+    payload = " {\"on\":true}"
     headers = {
     'content-type': "application/json",
     'cache-control': "no-cache"
     }
-    if hue_data["lights"]["1"]["state"]["reachable"] == True & hue_data["lights"]["1"]["state"]["on"] == True:
-        payload = " {\"on\":true}"
-        r = requests.put(url, data = payload, headers=headers)
-    else:
-        payload = " {\"on\":false}"
-        r = requests.put(url, data = payload, headers=headers)
-    pass
-
-def read_weather_data():
-    owm_key = classes.API_Keys.owm_api_key()
-    api_url = "https://api.openweathermap.org/data/2.5/onecall?lat=47.1921&lon=7.3959&appid="
-    r = requests.get(url = api_url + owm_key + "&units=metric")
-    data = r.json()
-    return data
-
-def new_day(old, wetter_data):
-    new = datetime.now()
-    if new.day > old.day:
-        data = read_weather_data()
-        print("neue daten wurden übertragen")
-        return data , new
-    else:
-        print("Es wurden keine neuen Daten geladen")
-        return wetter_data, old
+    nummer = str(nummer)
+    url = "http://192.168.1.10/api/" + classes.API_Keys.hue_api_key() + "/lights/" + nummer + "/state"
+    r = requests.put(url, data=payload, headers=headers)
+    print(r.json())
     pass
