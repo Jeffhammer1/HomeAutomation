@@ -22,7 +22,7 @@ def readwetterdata():
     key = API_Keys.owm_api_key()
     r = requests.get(url = api_url + key + "&units=metric")
     data = r.json()
-    return (data)
+    return data
 
 @api.route("/readhuedata", methods=["GET", "POST"])
 def readhuedata():
